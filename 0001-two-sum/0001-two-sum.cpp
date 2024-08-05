@@ -10,6 +10,7 @@ public:
             if (hash.find(complement) != hash.end() && hash[complement] != i) {
                 return {i, hash[complement]};
             }
+            
         }
         return {};
     }
