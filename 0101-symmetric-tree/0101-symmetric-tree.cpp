@@ -10,17 +10,19 @@
  * };
  */
 class Solution {
+private:
+    bool isSymmetricUtil(TreeNode* root1, TreeNode* root2) {
+        if (root1 == NULL || root2 == NULL) {
+            return root1 == root2;
+        }
+        return (root1->val == root2->val) && isSymmetricUtil(root1->left, root2->right) && isSymmetricUtil(root1->right, root2->left);
+    }
+
 public:
     bool isSymmetric(TreeNode* root) {
-       return root==NULL || check(root->left,root->right);
-    }
-    bool check(TreeNode* left,TreeNode* right) {
-       if(left==NULL || right==NULL){
-            return left==right;
-       }
-       if(left->val!=right->val){
-        return false;
-       }
-       return check(left->left,right->right) && check(left->right,right->left);
+        if (!root) {
+            return true;
+        }
+        return isSymmetricUtil(root->left, root->right);
     }
 };
